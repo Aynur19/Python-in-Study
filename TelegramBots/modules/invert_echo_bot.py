@@ -1,5 +1,5 @@
 from telegram.ext import MessageHandler, Filters
-from modules.generic_bot import GenericBot
+from modules import GenericBot
 
 
 class InvertEchoBot(GenericBot):

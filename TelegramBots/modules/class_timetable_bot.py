@@ -1,4 +1,4 @@
-from modules.generic_bot import GenericBot
+from modules import GenericBot
 
 
 class ClassTimetableBot(GenericBot):

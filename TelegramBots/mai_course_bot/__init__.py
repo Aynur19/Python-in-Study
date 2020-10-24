@@ -22,9 +22,9 @@ def main():
     # echo.command_handlers_build(dp)
     # echo.message_handlers_build(dp)
 
-    # invert_echo = InvertEchoBot()
-    # invert_echo.command_handlers_build(dp)
-    # invert_echo.message_handlers_build(dp)
+    invert_echo = InvertEchoBot()
+    invert_echo.command_handlers_build(dp)
+    invert_echo.message_handlers_build(dp)
 
     updater.start_polling()
     updater.idle()

@@ -11,7 +11,8 @@ class InvertEchoBot(GenericBot):
                          f'/q_{self.cmd_name}- выключает бота {self.name}\n'
 
     def cmd_invert_echo(self, update, context):
-        update.message.reply_text(update.message.text[::-1])
+        if self.is_enabled:
+            update.message.reply_text(update.message.text[::-1])
 
     def message_handlers_build(self, dispatcher):
         dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, self.cmd_invert_echo))

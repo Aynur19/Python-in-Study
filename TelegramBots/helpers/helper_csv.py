@@ -1,3 +1,4 @@
+from os import path
 from datetime import datetime
 from models import ClassTimetable
 import csv
@@ -110,10 +111,10 @@ def get_class_timetable_data():
     return header, data
 
 
-def filtration_class_timetable(predicate):
-    reader = csv.DictReader(open(r"../data/ClassTimetable.csv", 'r', encoding='utf-8'), delimiter=';')
+def filtration_class_timetable(filepath: str, predicate):
+    reader = csv.DictReader(open(filepath, 'r', encoding='utf-8'), delimiter=';')
     rows = filter_dict(reader, predicate)
-    print(rows)
+    return rows
 
 
 def filter_dict(csv_reader: csv.DictReader, callback):
@@ -127,4 +128,5 @@ def filter_dict(csv_reader: csv.DictReader, callback):
 
 if __name__ == '__main__':
     # write_class_timetable()
-    filtration_class_timetable(predicate=lambda x: x['weekday'] == 'Среда')
+    filepath = path.join(path.dirname(__file__), path.join('data', 'ClassTimetable.csv'))
+    filtration_class_timetable(filepath, predicate=lambda x: x['weekday'] == 'Среда')

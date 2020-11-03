@@ -1,8 +1,11 @@
-import csv
+from os import path
 
+from models import ClassTimetable
+from nameof import nameof
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
+from helpers.helper_csv import filtration_class_timetable
 from modules import GenericBot
 
 
@@ -16,6 +19,7 @@ class ClassTimetableBot(GenericBot):
                          f'/ct_days - вывод дней недели\n' \
                          f'/q_{self.cmd_name} - выключение бота {self.name}\n'
         self.week_days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+        self.model = ClassTimetable()
 
     def cmd_timetable_days(self, update, context):
         """
@@ -38,17 +42,19 @@ class ClassTimetableBot(GenericBot):
         query = update.callback_query
         query.answer()
 
-        ct_dict = {}
-        # with open('./data/ClassTimetable.csv', 'r', encoding='utf-8') as csv_file:
-        #     reader = csv.reader(csv_file, delimiter="\n")
-        #     for row, line in enumerate(reader):
-        #         for column in [s.split(';') for s in line][row]:
-        #             if i == 0:
-        #                 ct_dict.update({column: ''})
-        #             else:
-        #                 ct_dict.update({ct_dict.})
-        #         print(f'line[{0}] = {1}'.format(i, line))
-        #query.edit_message_text(text="Selected option: {}".format(query.data))
+        filepath = path.join(path.dirname(path.dirname(__file__)), path.join('data', 'ClassTimetable.csv'))
+        ct_dict = filtration_class_timetable(filepath, predicate=lambda x: x['weekday'] == query.data)
+
+        answer_message = ''
+        for line in ct_dict:
+            answer_message += f'--------------------\n' \
+                              f'Начало: {line[nameof(self.model.lessonStart)][slice(-8,-3)]}\n' \
+                              f'Предмет: {line[nameof(self.model.lessonName)]}\n' \
+                              f'Преподаватель: {line[nameof(self.model.teacherName)]}\n' \
+                              f'Онлайн: {line[nameof(self.model.isOnline)]}\n' \
+                              f'Дополнительно: {line[nameof(self.model.otherInfo)]}\n' \
+                              f'--------------------\n'
+        query.edit_message_text(text=answer_message)
 
     def command_handlers_build(self, dispatcher):
         """

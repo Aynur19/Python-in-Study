@@ -1,5 +1,7 @@
 # region Imports
 # Подключение модулей и библиотек сторонних.
+from modules.class_timetable_bot import ClassTimetableBot
+
 from modules.invert_echo_bot import InvertEchoBot
 from telegram.ext import Updater
 
@@ -18,13 +20,12 @@ def main():
     updater = Updater(token = Config.TOKEN, use_context = True)
     dp = updater.dispatcher
 
-    # echo = EchoBot()
-    # echo.command_handlers_build(dp)
-    # echo.message_handlers_build(dp)
+    # mai_bot = EchoBot()
+    # mai_bot = InvertEchoBot()
+    mai_bot = ClassTimetableBot()
 
-    invert_echo = InvertEchoBot()
-    invert_echo.command_handlers_build(dp)
-    invert_echo.message_handlers_build(dp)
+    mai_bot.command_handlers_build(dp)
+    mai_bot.message_handlers_build(dp)
 
     updater.start_polling()
     updater.idle()

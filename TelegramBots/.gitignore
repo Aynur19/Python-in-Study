@@ -107,9 +107,8 @@ celerybeat.pid
 # Environments
 .env
 .venv
-TelegramBots/env/
+env/
 venv/
-TelegramBots/env/
 env.bak/
 venv.bak/
 

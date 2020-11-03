@@ -3,12 +3,11 @@ from models import ClassTimetable
 import csv
 
 
-def class_timetable_to_csv():
+def write_class_timetable():
     header, data = get_class_timetable_data()
 
-    with open('ClassTimetable.csv', 'w', newline='') as csv_file:
+    with open('../data/ClassTimetable.csv', 'w', newline='', encoding='utf-8') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=';')
-
         csv_writer.writerow(header)
 
         for lesson in data:
@@ -101,7 +100,7 @@ def get_class_timetable_data():
                                'Вяткин П. М.',
                                other_info='Zoom'))
 
-    data.append(ClassTimetable('Python',
+    data.append(ClassTimetable('Суббота',
                                datetime.strptime('12:30', '%H:%M'),
                                datetime.strptime('15:30', '%H:%M'),
                                'Python',
@@ -111,5 +110,21 @@ def get_class_timetable_data():
     return header, data
 
 
+def filtration_class_timetable(predicate):
+    reader = csv.DictReader(open(r"../data/ClassTimetable.csv", 'r', encoding='utf-8'), delimiter=';')
+    rows = filter_dict(reader, predicate)
+    print(rows)
+
+
+def filter_dict(csv_reader: csv.DictReader, callback):
+    list_of_dict = []
+    for line in csv_reader:
+        if callback(line):
+            list_of_dict.append(line)
+
+    return list_of_dict
+
+
 if __name__ == '__main__':
-    class_timetable_to_csv()
+    # write_class_timetable()
+    filtration_class_timetable(predicate=lambda x: x['weekday'] == 'Среда')

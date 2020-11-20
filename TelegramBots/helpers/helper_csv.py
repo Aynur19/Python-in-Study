@@ -1,10 +1,14 @@
+"""Вспомогательный модуль для работы с csv-файлами"""
+import csv
 from os import path
 from datetime import datetime
 from models import ClassTimetable
-import csv
 
 
 def write_class_timetable():
+    """
+    Запись объектов типа ClassTimetable в csv-файл
+    """
     header, data = get_class_timetable_data()
 
     with open('../data/ClassTimetable.csv', 'w', newline='', encoding='utf-8') as csv_file:
@@ -13,20 +17,24 @@ def write_class_timetable():
 
         for lesson in data:
             csv_writer.writerow([f'{lesson.weekday}',
-                                 f'{lesson.lesson_start}',
-                                 f'{lesson.lesson_end}',
-                                 f'{lesson.lesson_name}',
-                                 f'{lesson.teacher_name}',
-                                 f'{lesson.is_every_week}',
-                                 f'{lesson.is_even_week}',
-                                 f'{lesson.is_odd_week}',
-                                 f'{lesson.is_once_month}',
-                                 f'{lesson.is_online}',
-                                 f'{lesson.other_info}',
+                                 f'{lesson.lessonStart}',
+                                 f'{lesson.lessonEnd}',
+                                 f'{lesson.lessonName}',
+                                 f'{lesson.teacherName}',
+                                 f'{lesson.isEveryWeek}',
+                                 f'{lesson.isEvenWeek}',
+                                 f'{lesson.isOddWeek}',
+                                 f'{lesson.isOnceMonth}',
+                                 f'{lesson.isOnline}',
+                                 f'{lesson.otherInfo}',
                                  ])
 
 
 def get_class_timetable_data():
+    """
+    Получение данных объктов типа ClassTimetable для последующей записи в csv-файл
+    :return: данные для записи в csv-файл
+    """
     header = ['weekday', 'lessonStart', 'lessonEnd', 'lessonName',
               'teacherName', 'isEveryWeek', 'isEvenWeek', 'isOddWeek',
               'isOnceMonth', 'isOnline', 'otherInfo']
@@ -111,13 +119,25 @@ def get_class_timetable_data():
     return header, data
 
 
-def filtration_class_timetable(filepath: str, predicate):
-    reader = csv.DictReader(open(filepath, 'r', encoding='utf-8'), delimiter=';')
+def filtration_class_timetable(filename: str, predicate):
+    """
+    Фильтрация данных объектов типа ClassTimeTable с csv-файла
+    :param filename: путь к csv-файлу
+    :param predicate: лямбда-функция фильтрации данных
+    :return: отфильтрованные данные из csv-файла
+    """
+    reader = csv.DictReader(open(filename, 'r', encoding='utf-8'), delimiter=';')
     rows = filter_dict(reader, predicate)
     return rows
 
 
 def filter_dict(csv_reader: csv.DictReader, callback):
+    """
+    Фильтрация данных контекста csv-файла
+    :param csv_reader: контекст csv-файла
+    :param callback: лямда-функция фильтрации данных
+    :return: список отфильтрованных словарей из контекста csv-файла
+    """
     list_of_dict = []
     for line in csv_reader:
         if callback(line):
@@ -127,6 +147,6 @@ def filter_dict(csv_reader: csv.DictReader, callback):
 
 
 if __name__ == '__main__':
-    # write_class_timetable()
-    filepath = path.join(path.dirname(__file__), path.join('data', 'ClassTimetable.csv'))
-    filtration_class_timetable(filepath, predicate=lambda x: x['weekday'] == 'Среда')
+    write_class_timetable()
+    # filepath = path.join(path.dirname(__file__), path.join('data', 'ClassTimetable.csv'))
+    # filtration_class_timetable(filepath, predicate=lambda x: x['weekday'] == 'Среда')

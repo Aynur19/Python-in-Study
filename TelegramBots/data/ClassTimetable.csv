@@ -7,4 +7,4 @@ weekday;lessonStart;lessonEnd;lessonName;teacherName;isEveryWeek;isEvenWeek;isOd
 Четверг;1900-01-01 16:00:00;1900-01-01 17:30:00;Мониторинг проектной деятельности;IT-центр, науч. рук.;False;False;False;True;True;Zoom
 Четверг;1900-01-01 18:15:00;1900-01-01 21:30:00;Программная инженерия;Рыбалко А.;True;True;True;False;True;Zoom
 Суббота;1900-01-01 09:00:00;1900-01-01 12:15:00;Agile;Вяткин П. М.;True;True;True;False;True;Zoom
-Python;1900-01-01 12:30:00;1900-01-01 15:30:00;Python;Иванов А. Н.;True;True;True;False;True;Zoom
+Суббота;1900-01-01 12:30:00;1900-01-01 15:30:00;Python;Иванов А. Н.;True;True;True;False;True;Zoom

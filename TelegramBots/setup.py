@@ -1,13 +1,13 @@
-from setuptools import setup, find_packages
+"""Конфигуратор данного проекта как отдельного модуля/пакета"""
 import os
+from setuptools import setup, find_packages
 
 path = os.path.join(os.path.abspath("../.."), "README.md")
+long_description = ""
 
 if os.path.exists(path):
     with open(path, "r") as f:
         long_description = f.read()
-else:
-    long_description = ""
 
 setup(
     name="mai_course_bot",

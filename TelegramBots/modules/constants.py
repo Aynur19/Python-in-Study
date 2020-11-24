@@ -1,7 +1,7 @@
 """Файл с константами"""
 msg_start_menu = "Меню"
 btn_start_menu_ct = "Расписание"
-btn_start_menu_notify = "Уведомления"
+btn_start_menu_ntf = "Уведомления"
 
 msg_ct = "Уточните какое расписание вам вывести"
 btn_ct_full = "Полное"
@@ -23,7 +23,6 @@ btn_day_fri = "Пятница"
 btn_day_sat = "Суббота"
 btn_day_sun = "Воскресенье"
 
-
 file_path_class_timetable = "data/ClassTimetable.csv"
 
 msg_ct_delimiter = "-------------------"
@@ -43,3 +42,12 @@ msg_ct_other_info = "Другая информация:"
 msg_ct_not = "занятий нет"
 msg_true = "Да"
 msg_false = "Нет"
+
+msg_ntf = "Настройте уведомления"
+btn_ntf_bef_lsn = "Перед началом занятия"
+btn_ntf_every_day = "В день занятия"
+btn_ntf_bef_lesson_h2 = "За 2 часа"
+btn_ntf_bef_lesson_h1 = "За час"
+btn_ntf_bef_lesson_min30 = "За 30 минут"
+btn_ntf_bef_lesson_min15 = "За 15 минут"
+btn_ntf_les = "За 2 часа"

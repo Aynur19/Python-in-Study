@@ -38,6 +38,8 @@ class ClassTimetableBot(GenericBot):
         dispatcher.add_handler(CallbackQueryHandler(self.get_ct_week, pattern=nameof(const.btn_week_)))
         dispatcher.add_handler(CallbackQueryHandler(self.get_ct_weekday_btns, pattern=nameof(const.btn_weekday)))
         dispatcher.add_handler(CallbackQueryHandler(self.get_ct_day, pattern=nameof(const.btn_day_)))
+        dispatcher.add_handler(CallbackQueryHandler(self.get_btns_ntf, pattern=nameof(const.btn_start_menu_ntf)))
+        dispatcher.add_handler(CallbackQueryHandler(self.get_btns_ntf_bef_lesson, pattern=nameof(const.btn_ntf_bef_lsn)))
         dispatcher.add_handler(CommandHandler("set_reminder", self.set_timer, pass_args=True, pass_job_queue=True, pass_chat_data=True))
 
     def alarm(self, context: CallbackContext):
@@ -47,11 +49,20 @@ class ClassTimetableBot(GenericBot):
 
     def set_timer(self, update: telegram.Update, context: CallbackContext):
         chat_id = update.message.chat_id
+        query = update.callback_query
+        query.answer()
+
+        ct_dict = self.get_ct()
+
+        if query.data == nameof(const.btn_ntf_bef_lesson_h2):
+
 
         if 'job' in context.chat_data:
             old_job = context.chat_data['job']
             old_job.schedule_removal()
-        new_job = context.job_queue.run_repeating(self.alarm, 5, context=chat_id)
+
+        new_job = context.job_queue.run_daily(self.alarm, datetime.time(8, 47, 0, 0), context=chat_id)
+        # new_job = context.job_queue.run_repeating(self.alarm, 5, context=chat_id)
         context.chat_data['job'] = new_job
 
         update.message.reply_text('Timer successfully set!')
@@ -59,9 +70,34 @@ class ClassTimetableBot(GenericBot):
     def get_start_menu(self, update: telegram.Update, context: CallbackContext):
         """Стартовое меню"""
         menu = [[InlineKeyboardButton(const.btn_start_menu_ct, callback_data=nameof(const.btn_start_menu_ct)),
-                 InlineKeyboardButton(const.btn_start_menu_notify, callback_data=const.btn_start_menu_notify)]]
+                 InlineKeyboardButton(const.btn_start_menu_ntf, callback_data=nameof(const.btn_start_menu_ntf))]]
+
         reply_markup = InlineKeyboardMarkup(menu)
         update.message.reply_text(const.msg_start_menu, reply_markup=reply_markup)
+
+    def get_btns_ntf(self, update: telegram.Update, context: CallbackContext):
+        """Меню -> Уведомления"""
+        query = update.callback_query
+        query.answer()
+
+        menu = [[InlineKeyboardButton(const.btn_ntf_bef_lsn, callback_data=nameof(const.btn_ntf_bef_lsn))],
+                [InlineKeyboardButton(const.btn_ntf_every_day, callback_data=nameof(const.btn_ntf_every_day))]]
+
+        reply_markup = InlineKeyboardMarkup(menu)
+        query.edit_message_text(text=const.msg_ntf, reply_markup=reply_markup)
+
+    def get_btns_ntf_bef_lesson(self, update: telegram.Update, context: CallbackContext):
+        """Меню -> Уведомления -> Перед началом занятий"""
+        query = update.callback_query
+        query.answer()
+
+        menu = [[InlineKeyboardButton(const.btn_ntf_bef_lesson_h2, callback_data=nameof(const.btn_ntf_bef_lesson_h2)),
+                InlineKeyboardButton(const.btn_ntf_bef_lesson_h1, callback_data=nameof(const.btn_ntf_bef_lesson_h1))],
+                [InlineKeyboardButton(const.btn_ntf_bef_lesson_min30, callback_data=nameof(const.btn_ntf_bef_lesson_min30)),
+                InlineKeyboardButton(const.btn_ntf_bef_lesson_min15, callback_data=nameof(const.btn_ntf_bef_lesson_min15))]]
+
+        reply_markup = InlineKeyboardMarkup(menu)
+        query.edit_message_text(text=const.msg_ntf, reply_markup=reply_markup)
 
     def get_ct_btns(self, update: telegram.Update, context: CallbackContext):
         """Меню -> Расписание занятий"""
@@ -93,7 +129,7 @@ class ClassTimetableBot(GenericBot):
         reply_markup = InlineKeyboardMarkup(menu)
         query.edit_message_text(text=const.msg_day_btns, reply_markup=reply_markup)
 
-    def get_ct(self, predicate):
+    def get_ct(self, predicate: lambda x: x is not None):
         filepath = path.join(path.dirname(path.dirname(__file__)), const.file_path_class_timetable)
         ct_dict = filtration_class_timetable(filepath, predicate=predicate)
         return ct_dict

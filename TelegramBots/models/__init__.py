@@ -31,3 +31,16 @@ class ClassTimetable:
         self.isOnceMonth = is_once_month
         self.isOnline = is_online
         self.otherInfo = other_info
+
+
+class NotificationOptions:
+    name: str
+    subject: str
+    time: datetime
+    days: []
+
+    def __init__(self, name: str, subject: str, time: datetime, days: [0, 1, 2, 3, 4, 5, 6]):
+        self.name = name
+        self.subject = subject
+        self.time = datetime
+        self.days = days

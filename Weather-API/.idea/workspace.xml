@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f89eaeca-556d-4531-b3de-6b9c853e772b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../TelegramBots/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../TelegramBots/models/__init__.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JupyterTrust" id="59108250-3f36-426d-a586-f7fc90e7e262" />
+  <component name="ProjectId" id="1kji15tNesHwRjDqdedy7wuc5T0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/api_test.py" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Weather-API" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="weather_api" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Weather-API" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weather_api.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in api_test.py" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="Weather-API" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="D:\Dev\n.aynur19\Python-in-Study\Weather-API\env\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test/api_test.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.weather_api" />
+      <item itemvalue="Python tests.pytest in api_test.py" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.weather_api" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f89eaeca-556d-4531-b3de-6b9c853e772b" name="Default Changelist" comment="" />
+      <created>1606220182384</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606220182384</updated>
+      <workItem from="1606220208914" duration="1791000" />
+      <workItem from="1607099858345" duration="2016000" />
+      <workItem from="1607150076261" duration="4554000" />
+      <workItem from="1607422864310" duration="10766000" />
+      <workItem from="1607595841638" duration="2000" />
+      <workItem from="1607608343257" duration="45000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="21" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606221211043">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="137" y="21" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.736@0.0.1366.736" timestamp="1606221211043" />
+    <state width="608" height="346" key="DebuggerActiveHint" timestamp="1607431413613">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="569" height="466" key="DebuggerActiveHint/0.0.1366.736/1366.-256.1280.994@1366.-256.1280.994" timestamp="1607155835777" />
+    <state width="608" height="346" key="DebuggerActiveHint/0.0.1366.736@0.0.1366.736" timestamp="1607431413613" />
+    <state x="463" y="133" key="FileChooserDialogImpl" timestamp="1606220542229">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="463" y="133" key="FileChooserDialogImpl/0.0.1366.736@0.0.1366.736" timestamp="1606220542229" />
+    <state width="1323" height="225" key="GridCell.Tab.0.bottom" timestamp="1607441725498">
+      <screen x="1366" y="-256" width="1280" height="994" />
+    </state>
+    <state width="1323" height="225" key="GridCell.Tab.0.bottom/0.0.1366.736/1366.-256.1280.994@1366.-256.1280.994" timestamp="1607441725498" />
+    <state width="1323" height="264" key="GridCell.Tab.0.bottom/0.0.1366.736@0.0.1366.736" timestamp="1607431872744" />
+    <state width="1323" height="225" key="GridCell.Tab.0.center" timestamp="1607441725498">
+      <screen x="1366" y="-256" width="1280" height="994" />
+    </state>
+    <state width="1323" height="225" key="GridCell.Tab.0.center/0.0.1366.736/1366.-256.1280.994@1366.-256.1280.994" timestamp="1607441725498" />
+    <state width="1323" height="264" key="GridCell.Tab.0.center/0.0.1366.736@0.0.1366.736" timestamp="1607431872743" />
+    <state width="1323" height="225" key="GridCell.Tab.0.left" timestamp="1607441725497">
+      <screen x="1366" y="-256" width="1280" height="994" />
+    </state>
+    <state width="1323" height="225" key="GridCell.Tab.0.left/0.0.1366.736/1366.-256.1280.994@1366.-256.1280.994" timestamp="1607441725497" />
+    <state width="1323" height="264" key="GridCell.Tab.0.left/0.0.1366.736@0.0.1366.736" timestamp="1607431872743" />
+    <state width="1323" height="225" key="GridCell.Tab.0.right" timestamp="1607441725498">
+      <screen x="1366" y="-256" width="1280" height="994" />
+    </state>
+    <state width="1323" height="225" key="GridCell.Tab.0.right/0.0.1366.736/1366.-256.1280.994@1366.-256.1280.994" timestamp="1607441725498" />
+    <state width="1323" height="264" key="GridCell.Tab.0.right/0.0.1366.736@0.0.1366.736" timestamp="1607431872744" />
+    <state width="691" height="376" key="XDebugger.FullValuePopup" timestamp="1607431413609">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state width="691" height="376" key="XDebugger.FullValuePopup/0.0.1366.736@0.0.1366.736" timestamp="1607431413609" />
+    <state x="333" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1607429680782">
+      <screen x="0" y="0" width="1366" height="736" />
+    </state>
+    <state x="333" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.736@0.0.1366.736" timestamp="1607429680782" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/api_test.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/api_test.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Weather_API$main.coverage" NAME="main Coverage Results" MODIFIED="1607431872729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Weather_API$weather_api.coverage" NAME="weather_api Coverage Results" MODIFIED="1606221642153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Weather_API$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1606221029800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/Weather_API$pytest_in_api_test_py.coverage" NAME="pytest in api_test.py Coverage Results" MODIFIED="1607424845887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>

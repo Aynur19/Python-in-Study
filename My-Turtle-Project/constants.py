@@ -1,6 +1,6 @@
 ground_radius = 5000
 
-jewelry_tree_colors = 'ForestGreen'
+jewelry_tree_colors = 'green'
 
 distant_tree_colors = 'DarkGreen'
 

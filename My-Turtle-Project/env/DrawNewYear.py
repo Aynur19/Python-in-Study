@@ -9,16 +9,16 @@ screen = getscreen()
 screen.setup(1366, 768)
 screensize(canvwidth=1300, canvheight=600, bg='black')
 
+
 def draw_new_year():
     '''
     Рисование новогодней картины
     '''
-
     turt = Turtle()
     ht()
     turt.ht()
 
-    sleep(5)
+    # sleep(5)
     turt.speed(500)
 
     draw_sky(turt)
@@ -65,7 +65,7 @@ def draw_fir_tree(turt: Turtle, is_distant: bool, xy: (), with_garlands: bool = 
     if with_garlands:
         draw_tree_garlands(turt, circle_xy)
         head_x, head_y = branches_xy[len(branches_xy) - 1]
-        draw_fir_tree_star(star_size, branches_xy[len(branches_xy) - 1])
+        draw_fir_tree_star(turt, star_size, branches_xy[len(branches_xy) - 1])
 
 
 def draw_fir_tree_star(turt: Turtle, star_size: int, xy: (), rays: int = 5):
@@ -76,6 +76,7 @@ def draw_fir_tree_star(turt: Turtle, star_size: int, xy: (), rays: int = 5):
     :param xy: кортеж центра звезды
     :param rays: количество лучей звезды
     '''
+    x, y = xy
     turt.color(consts.tree_star_color)
     goto_position(turt, x - (star_size * 0.35), y - star_size / 2)
     turt.rt(int(-180 / rays))
@@ -124,7 +125,7 @@ def draw_tree_branches(turt: Turtle, tree_size: int, branches_xy: []):
                 turt.rt(angle)
                 turt.circle(branches_size, int((side_r * size_x)))
                 if i != (len(branches_xy) - 1):
-                    cur_circle_xy_r.append(pos())
+                    cur_circle_xy_r.append(turt.pos())
 
                 branches_size = random.randint(500, int(branches_size))
                 goto_position(turt, branch_x, branch_y)
@@ -132,9 +133,9 @@ def draw_tree_branches(turt: Turtle, tree_size: int, branches_xy: []):
                 turt.rt(-angle)
                 turt.circle(branches_size, int(-side_r * size_x))
                 if i != (len(branches_xy) - 1):
-                    cur_circle_xy_l.append(pos())
+                    cur_circle_xy_l.append(turt.pos())
             angle_max += 8
-            angle_min += 8
+            angle_min += 5
             size_x -= 0.1
         side_r -= 1
         angle_x += 5
@@ -204,10 +205,10 @@ def draw_tree_truck_oblique(turt: Turtle, tree_size: int, trunks: int = 10):
         side = -1
 
     turt.pensize(trunk_length)
-    turt.circle(side * size, int(trunk_length) / 2)
+    turt.circle(side * tree_size, int(trunk_length) / 2)
     for i in range(trunks):
         turt.pensize(trunk_length)
-        turt.circle(side * size, int(trunk_length) / 2)
+        turt.circle(side * tree_size, int(trunk_length) / 2)
         branches_pos_xy.append(turt.pos())
         trunk_length -= 1
 
@@ -223,7 +224,7 @@ def draw_tree_truck_straight(turt: Turtle, tree_size: int, trunks: int = 10):
     :return: массив кортежей с позициями начал ветвей
     '''
     branches_pos_xy = []
-    size = int(size / 100) + 5
+    size = int(tree_size / 100) + 5
     trunk_length = trunks
 
     turt.pensize(trunk_length)
@@ -281,6 +282,7 @@ def get_position_tree_trunk(turt: Turtle, is_distant: bool, angle_min: float, an
         y = random.uniform(-screen.window_height() / 2, -screen.window_height() / 3)
     return x, y
 # endregion
+
 
 # region Other
 def draw_geometric_figures(turt: Turtle):

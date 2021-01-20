@@ -1,9 +1,6 @@
-import math
-from time import sleep
 from turtle import *
 import random
 import constants as consts
-
 
 screen = getscreen()
 screen.setup(1366, 768)

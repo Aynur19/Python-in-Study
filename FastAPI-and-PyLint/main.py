@@ -1,3 +1,6 @@
+import argparse
+
+import uvicorn
 from fastapi import FastAPI, BackgroundTasks, UploadFile, File
 from pylint import epylint as lint
 import shutil
@@ -108,9 +111,18 @@ def pylint_analyse(file_path: str, file_name: str, msg_format: str = None):
 
 
 if __name__ == '__main__':
-    (pylint_stdout, pylint_stderr) = lint.py_run(command_options='py_files\\2021-01-23\\main_12-00-03.py --output-format=json',
-                                                 return_std=True)
+    # Здесь идет блок кода для работы с аргументами командной строки
+    parser = argparse.ArgumentParser(description='FastAPI and PyLint.')
+    # Аргумент для хоста
+    parser.add_argument('-host', type=str, default="127.0.0.1", help='host ip-address')
+    # Аргумент для порта
+    parser.add_argument('-port', type=int, default=5000, help='host port')
+    # Аргумент для debug режима
+    parser.add_argument('-debug', type=bool, default=False, help='Launch in debug mode?')
 
-    print(pylint_stdout.getvalue())
-    print('-----------------')
-    print(pylint_stderr.getvalue())
+    args = parser.parse_args()
+    print(f"Host = {args.host}; port = {args.port}")
+    print(f"Debug mode: {args.debug}")
+
+    # Запуск сервера с заданными параметрами
+    uvicorn.run("main:app", host=args.host, port=args.port, reload=args.debug, access_log=args.debug)

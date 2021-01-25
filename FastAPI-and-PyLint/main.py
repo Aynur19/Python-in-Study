@@ -7,40 +7,39 @@ import logging
 
 
 app = FastAPI()
-root = 'D:\Desktop\python_content'                                  # корневая папка
-# py_files_folder = f'{root}\py_files'                                # папка с .py файлами
-# pylint_files_folder = f'{root}\pylint_files'                        # папка с отчетами pylint
-today_folder = f'\{datetime.datetime.now().strftime("%Y-%m-%d")}'   # названеи директории текущего дня
+root = os.path.abspath('D:\Desktop\python_content')                                     # корневая папка
+today_folder = os.path.join(root, f'{datetime.datetime.now().strftime("%Y-%m-%d")}')   # названеи директории текущего дня
 
+if not os.path.exists(root):
+    os.mkdir(root)
 
-if not os.path.isdir(f'{root}{today_folder}'):
-    os.mkdir(f'{root}{today_folder}')
+if not os.path.exists(today_folder):
+    os.mkdir(today_folder)
 
-logging.basicConfig(filename=f'{root}{today_folder}\sample.log', level=logging.INFO)
+logging.basicConfig(filename=os.path.join(today_folder, 'sample.log'), level=logging.INFO)
 log = logging.getLogger("ex")
-log.info(f'Создана директория: {root}{today_folder}')
+log.info(f'Создана директория: {today_folder}')
 
 
 @app.get("/python-files/pylint-report")
-async def upload_py(file_name: str):
+async def get_report(file_name: str):
 
     message = ''
     filename = file_name.split('.')
-    file_path = f'{root}{today_folder}\{filename[0]}.{filename[1]}'
+    file_path = os.path.join(today_folder, f'{file_name}')
     log.info(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
              f'Запрос на полученеи отчета статического анализа "{filename[0]}.py"')
     try:
-        with open(file_path, 'r') as buffer:
-            message = buffer.read()
-    except FileNotFoundError:
-        message = f'Не удалось найти файл "file_name"'
-        log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: {message}: {FileNotFoundError}')
+        if not os.path.exists(file_path):
+            message = f'Не удалось найти файл "{filename}"'
+        else:
+            with open(file_path, 'r') as buffer:
+                message = buffer.read()
+            log.info(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
+                         f'Отправка отчета статического анализа файла "{filename[0]}.py" клиенту')
     except Exception:
         message = f'Ошибка сервера'
         log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: {message}: {Exception}')
-    else:
-        log.info(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
-                 f'Отправка отчета статического анализа файла "{filename[0]}.py" клиенту')
     return {f'message': message}
 
 
@@ -61,15 +60,14 @@ async def upload_py(file: UploadFile = File(...), message_format: str = None,
         message = f'Получен файл "{file.filename}" с неправилным расширением. Необходим файл с расширением .py'
         log.warning(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: {message}')
     else:
+        if not os.path.exists(today_folder):
+            os.mkdir(today_folder)
+
         file_name = f'{file.filename[:-3]}_{datetime.datetime.now().strftime("%H-%M-%S")}'
-        file_path = f'{root}{today_folder}\{file_name}.py'
+        file_path = os.path.join(today_folder, f'{file_name}.py')
         try:
             with open(file_path, 'wb') as buffer:
                 shutil.copyfileobj(file.file, buffer)
-
-        except FileNotFoundError:
-            message = f'Не удалось сохранить загруженный файл на диске'
-            log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: {message}: {FileNotFoundError}')
         except Exception:
             message = f'Ошибка сервера'
             log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: {message}: {Exception}')
@@ -95,16 +93,12 @@ def pylint_analyse(file_path: str, file_name: str, msg_format: str = None):
         (pylint_stdout, pylint_stderr) = lint.py_run(command_options=f'{file_path}', return_std=True)
         file_ext = '.txt'
 
-    pylint_file_path = f'{root}{today_folder}\{file_name}{file_ext}'
+    pylint_file_path = os.path.join(today_folder, f'{file_name}{file_ext}')
     try:
         log.info(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
                  f'Запись отчета статического анализа файла "{file_name}.py" в файл "{pylint_file_path}"')
         with open(pylint_file_path, 'w') as file:
             file.write(f'{pylint_stderr.getvalue()}\n{pylint_stdout.getvalue()}')
-    except FileNotFoundError:
-        log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
-                      f'Не удалось сохранить отчет статического анализа файла "{file_name}.py" '
-                      f'в файл "{pylint_file_path}": {FileNotFoundError}')
     except Exception:
         log.exception(f'{datetime.datetime.now().strftime("%Y-%m-%d-%H:%M.%S")}: '
                       f'Ошибка сервера: {Exception}')

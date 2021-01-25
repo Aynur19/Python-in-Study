@@ -10,7 +10,7 @@ import logging
 
 
 app = FastAPI()
-root = os.path.abspath('D:\Desktop\python_content')                                     # корневая папка
+root = os.path.join(os.getcwd(), 'python_content')                                     # корневая папка
 today_folder = os.path.join(root, f'{datetime.datetime.now().strftime("%Y-%m-%d")}')   # названеи директории текущего дня
 
 if not os.path.exists(root):
